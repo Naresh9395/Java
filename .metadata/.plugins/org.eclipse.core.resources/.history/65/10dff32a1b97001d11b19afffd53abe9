@@ -1,0 +1,9 @@
+package com.dmantz.orderservice.dto;
+
+import lombok.Data;
+
+@Data
+
+public class OrdereRequest {
+
+}

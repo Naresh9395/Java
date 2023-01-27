@@ -1,0 +1,47 @@
+package com.dmantz.orderservice.service;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.dmantz.orderservice.dto.OrderLineItemsDto;
+import com.dmantz.orderservice.dto.OrdereRequest;
+import com.dmantz.orderservice.model.Order;
+import com.dmantz.orderservice.model.OrderLineItems;
+import com.dmantz.orderservice.repository.OrderRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class OrederService {
+	
+	private final OrderRepository orderRepository;
+
+	public void placeOrder(OrdereRequest ordereRequest) {
+
+		Order order = new Order();
+		order.setOrderNumber(UUID.randomUUID().toString());
+		
+		List<OrderLineItems> orderLineItems =  ordereRequest.getOrderLineItemsDtoList()
+		.stream()
+		.map(this::mapToDto)//method reference
+		.toList();
+		
+		order.setOrederLineItemsList(orderLineItems);
+		orderRepository.save(order);
+
+	}
+
+	private OrderLineItems mapToDto(OrderLineItemsDto orderLineItemsDto) {
+		
+		OrderLineItems orderLineItems =  new OrderLineItems();
+		orderLineItems.setPrice(orderLineItemsDto.getPrice());
+		orderLineItems.setQuantity(orderLineItemsDto.getQuantity());
+		orderLineItems.setSkuCode(orderLineItemsDto.getSkuCode());
+		
+		return null;
+	}
+
+}

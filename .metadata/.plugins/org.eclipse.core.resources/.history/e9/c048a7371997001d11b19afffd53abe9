@@ -1,0 +1,16 @@
+package com.dmantz.orderservice.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "t_order_line_items")
+@Getter
+@Setter
+
+
+public class OrederLineItems {
+
+}

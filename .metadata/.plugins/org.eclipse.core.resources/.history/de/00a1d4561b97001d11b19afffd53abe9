@@ -1,0 +1,5 @@
+package com.dmantz.orderservice.dto;
+
+public class OrderLineItemsDto {
+
+}

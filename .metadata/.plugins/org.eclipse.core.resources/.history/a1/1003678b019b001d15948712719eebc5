@@ -1,0 +1,5 @@
+package com.dmantz.orderservice.repository;
+
+public interface OrderRepository {
+
+}
