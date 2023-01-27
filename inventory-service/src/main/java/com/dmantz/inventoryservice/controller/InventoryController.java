@@ -26,6 +26,7 @@ public class InventoryController {
 	public boolean isInStock(@PathVariable("sku-code") String skuCode) {
 
 		return inventoryService.isInStock(skuCode);
+		//return
 
 	}
 
